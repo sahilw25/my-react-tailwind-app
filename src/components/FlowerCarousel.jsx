@@ -1,43 +1,42 @@
 import { useState, useRef } from "react";
 
-const images = [
-  { src: `${import.meta.env.BASE_URL}images/QPimage1.png`, title: "Leaf Tones", desc: "Pattern-rich greenhouse grown foliage." },
-  { src: `${import.meta.env.BASE_URL}images/QPimage2.png`, title: "Garden Raised", desc: "Naturally nurtured for vibrant bloom." },
-  { src: `${import.meta.env.BASE_URL}images/QPimage3.png`, title: "Good harvest", desc: "A tradition of natural growth and responsible farming." },
-  { src: `${import.meta.env.BASE_URL}images/QPimage4.jpg`, title: "Season Bright", desc: "Bold flowers harvested with care." },
-  { src: `${import.meta.env.BASE_URL}images/QPimage5.jpg`, title: "Bed of Petals", desc: "Lovingly cultivated to last longer." }
-];
-
 export default function FlowerCarousel() {
+  const images = [
+    { src: `${import.meta.env.BASE_URL}images/QPimage1.png`, title: "Leaf Tones", desc: "Pattern-rich greenhouse grown foliage." },
+    { src: `${import.meta.env.BASE_URL}images/QPimage2.png`, title: "Garden Raised", desc: "Naturally nurtured for vibrant bloom." },
+    { src: `${import.meta.env.BASE_URL}images/QPimage3.png`, title: "Good harvest", desc: "A tradition of natural growth and responsible farming." },
+    { src: `${import.meta.env.BASE_URL}images/QPimage4.jpg`, title: "Season Bright", desc: "Bold flowers harvested with care." },
+    { src: `${import.meta.env.BASE_URL}images/QPimage5.jpg`, title: "Bed of Petals", desc: "Lovingly cultivated to last longer." }
+  ];
+
   const [index, setIndex] = useState(2);
   const [animating, setAnimating] = useState(false);
-
   const startX = useRef(0);
 
   const handleStart = (x) => (startX.current = x);
-
   const handleEnd = (x) => {
     if (x < startX.current - 50 && index < images.length - 1) triggerChange(index + 1);
     if (x > startX.current + 50 && index > 0) triggerChange(index - 1);
   };
 
-  const triggerChange = (newIndex) => {
+  const triggerChange = (i) => {
     setAnimating(true);
-    setTimeout(() => setAnimating(false), 350); // Reset animation
-    setIndex(newIndex);
+    setTimeout(() => setAnimating(false), 300);
+    setIndex(i);
   };
 
-  const offset = index * 308;
+  const offset = index * 260;
 
   return (
-    <div className="w-full flex flex-col items-center my-20 select-none"> {/* Added top margin */}
-      
+    <div className="w-full flex flex-col items-center my-20 select-none">
+
       {/* CAROUSEL */}
-      <div className="relative w-full flex justify-center items-center">
+      <div className="relative w-full flex justify-center items-center overflow-hidden">
         <div
-          className="flex gap-12 transition-transform duration-500 ease-out"
+          className="flex gap-10 transition-transform duration-300 ease-out"
           style={{
-            transform: `translateX(calc(50% - ${offset + 130}px))`
+            transform: `translate3d(calc(50% - ${offset}px), 0, 0)`,
+            willChange: "transform",
           }}
           onMouseDown={(e) => handleStart(e.clientX)}
           onMouseUp={(e) => handleEnd(e.clientX)}
@@ -47,22 +46,18 @@ export default function FlowerCarousel() {
           {images.map((item, i) => (
             <div
               key={i}
-              className="shrink-0"
+              className="shrink-0 transition-transform duration-300"
               style={{
-                width: i === index ? 260 : 240,
-                opacity: i === index ? 1 : 0.6,
                 transform: `
-                  scale(${i === index ? 1.12 : 1})
-                  rotate(${(i - index) * 6}deg)
+                  scale(${i === index ? 1.15 : 0.92})
+                  rotate(${(i - index) * 5}deg)
                 `,
-                transition: "0.5s"
+                willChange: "transform"
               }}
             >
               <img
                 src={item.src}
-                className={`rounded-lg w-full object-cover ${
-                  i === index ? "h-[380px]" : "h-[340px]"
-                }`}
+                className="rounded-lg w-[240px] h-[350px] object-cover"
                 alt=""
               />
             </div>
@@ -70,33 +65,18 @@ export default function FlowerCarousel() {
         </div>
       </div>
 
-      {/* TEXT BELOW — smooth fade + slide up */}
+      {/* TEXT */}
       <div
         className={`
-          text-center mt-10
-          transition-all duration-500
+          text-center mt-10 transition-all duration-300
           ${animating ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}
         `}
         key={index}
       >
-        <h3 className="
-            font-worksans
-            font-normal text-center tracking-[-1px]
-            text-[25px] leading-[40px]   /* mobile */
-            md:text-[36px] md:leading-[72px]  /* desktop */
-            mb-2
-          "
-        >{images[index].title}
+        <h3 className="font-worksans text-[25px] md:text-[36px] mb-2">
+          {images[index].title}
         </h3>
-
-        <p className="
-            font-worksans
-            font-normal text-center tracking-[0px]
-            text-[16px] leading-[100%]   /* mobile */
-            md:text-[24px] md:leading-[100%]  /* desktop */
-            text-gray-600 max-w-3xl mx-auto mb-6
-          "
-        >
+        <p className="text-gray-600 max-w-2xl mx-auto text-[16px] md:text-[22px] leading-tight">
           {images[index].desc}
         </p>
       </div>
