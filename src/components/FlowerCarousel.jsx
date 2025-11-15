@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
 
 const images = [
-  { src: "${import.meta.env.BASE_URL}images/QPimage1.png", title: "Leaf Tones", desc: "Pattern-rich greenhouse grown foliage." },
-  { src: "${import.meta.env.BASE_URL}images/QPimage2.png", title: "Garden Raised", desc: "Naturally nurtured for vibrant bloom." },
-  { src: "${import.meta.env.BASE_URL}images/QPimage3.png", title: "Good harvest", desc: "A tradition of natural growth and responsible farming." },
-  { src: "${import.meta.env.BASE_URL}images/QPimage4.jpg", title: "Season Bright", desc: "Bold flowers harvested with care." },
-  { src: "${import.meta.env.BASE_URL}images/QPimage5.jpg", title: "Bed of Petals", desc: "Lovingly cultivated to last longer." }
+  { src: `${import.meta.env.BASE_URL}images/QPimage1.png`, title: "Leaf Tones", desc: "Pattern-rich greenhouse grown foliage." },
+  { src: `${import.meta.env.BASE_URL}images/QPimage2.png`, title: "Garden Raised", desc: "Naturally nurtured for vibrant bloom." },
+  { src: `${import.meta.env.BASE_URL}images/QPimage3.png`, title: "Good harvest", desc: "A tradition of natural growth and responsible farming." },
+  { src: `${import.meta.env.BASE_URL}images/QPimage4.jpg`, title: "Season Bright", desc: "Bold flowers harvested with care." },
+  { src: `${import.meta.env.BASE_URL}images/QPimage5.jpg`, title: "Bed of Petals", desc: "Lovingly cultivated to last longer." }
 ];
 
 export default function FlowerCarousel() {

@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 
-const IMAGES = ['/images/image1.png','/images/image2.jpg','/images/image3.jpg','/images/image4.jpg']
+const IMAGES = [
+  `${import.meta.env.BASE_URL}images/image1.png`,
+  `${import.meta.env.BASE_URL}images/image2.jpg`,
+  `${import.meta.env.BASE_URL}images/image3.jpg`,
+  `${import.meta.env.BASE_URL}images/image4.jpg`
+]
 
 
 export default function Hero(){
