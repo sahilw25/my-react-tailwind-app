@@ -11,8 +11,30 @@ return (
 <main>
 <Hero />
 <section id="products" className="py-24 bg-[#F8F2ED] text-center overflow-hidden">
-<h2 className="text-3xl font-medium mb-3">Quality Products</h2>
-<p className="text-gray-600 max-w-2xl px-8 md:mx-auto mb-12 my-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<h2 
+  className="
+    font-worksans
+    font-normal text-center tracking-[-1px]
+    text-[30px] leading-[40px]   /* mobile */
+    md:text-[56px] md:leading-[72px]  /* desktop */
+    mb-6
+  "
+>
+  Quality Products
+</h2>
+
+<p 
+  className="
+    font-worksans
+    font-normal text-center tracking-[0px]
+    text-[16px] leading-[22px]   /* mobile */
+    md:text-[24px] md:leading-[100%]  /* desktop */
+    text-gray-600 max-w-3xl mx-4 md:mx-auto mb-12
+  "
+>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+  tempor incididunt ut labore et dolore magna aliqua.
+</p>
 
 
 <FlowerCarousel />

@@ -79,8 +79,26 @@ export default function FlowerCarousel() {
         `}
         key={index}
       >
-        <h3 className="text-xl font-semibold">{images[index].title}</h3>
-        <p className="text-gray-500 mt-1 text-sm">{images[index].desc}</p>
+        <h3 className="
+            font-worksans
+            font-normal text-center tracking-[-1px]
+            text-[25px] leading-[40px]   /* mobile */
+            md:text-[36px] md:leading-[72px]  /* desktop */
+            mb-2
+          "
+        >{images[index].title}
+        </h3>
+
+        <p className="
+            font-worksans
+            font-normal text-center tracking-[0px]
+            text-[16px] leading-[100%]   /* mobile */
+            md:text-[24px] md:leading-[100%]  /* desktop */
+            text-gray-600 max-w-3xl mx-auto mb-6
+          "
+        >
+          {images[index].desc}
+        </p>
       </div>
 
     </div>
