@@ -31,13 +31,26 @@ body {
 .split { animation: splitReveal 1.2s forwards; }
 
 
-@keyframes borderRun {
+/* @keyframes borderRun {
 0%, 100% { border-color: white transparent transparent transparent; }
 25% { border-color: white white transparent transparent; }
 50% { border-color: white white white transparent; }
 75% { border-color: white white white white; }
 }
-.animate-borderRun { animation: borderRun 5s linear infinite; }
+.animate-borderRun { animation: borderRun 5s linear infinite; } */
+
+.progress-border {
+    animation: perimeterFill 5s linear forwards;
+}
+
+@keyframes perimeterFill {
+    from {
+        stroke-dashoffset: 400; 
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
 
 
 

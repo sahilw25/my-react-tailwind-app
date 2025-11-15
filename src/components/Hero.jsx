@@ -56,13 +56,47 @@ export default function Hero(){
 
 
             <div className="absolute bottom-8 flex items-center space-x-8 px-6 md:pl-[135px]">
-                <button aria-label="Next slide" onClick={goNext} className="relative w-24 h-24 flex items-center justify-center cursor-pointer group">
-                    <div className="absolute inset-0 border-4 border-transparent border-t-white rounded-sm animate-borderRun" />
+                <button
+                    aria-label="Next slide"
+                    onClick={goNext}
+                    className="relative w-24 h-24 flex items-center justify-center cursor-pointer group"
+                >
+                    {/* perimeter progress animation */}
+                    <svg
+                        className="absolute inset-0"
+                        width="100%"
+                        height="100%"
+                        viewBox="0 0 100 100"
+                    >
+                        <rect
+                            key={index}
+                            x="2"
+                            y="2"
+                            width="96"
+                            height="96"
+                            fill="none"
+                            stroke="white"
+                            strokeWidth="5"
+                            strokeDasharray="400"
+                            strokeDashoffset="400"
+                            className="progress-border"
+                        />
+                    </svg>
+
+                    
+
                     <div className="relative w-16 h-16 overflow-hidden">
-                        <img id="thumb" src={IMAGES[nextIndex]} alt="Next slide preview" className="w-full h-full object-cover"/>
-                        <div className="absolute inset-0 flex items-center justify-center text-white text-sm bg-black/40 group-hover:bg-black/60 transition">Next</div>
+                        <img
+                            src={IMAGES[nextIndex]}
+                            alt="Next slide preview"
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center text-white text-sm bg-black/40 group-hover:bg-black/60 transition">
+                            Next
+                        </div>
                     </div>
                 </button>
+
 
 
             <div className="text-white text-sm">
